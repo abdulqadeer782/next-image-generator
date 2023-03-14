@@ -1,5 +1,5 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, Select } from 'antd';
 import { useEffect, useState } from 'react';
 
 const SearchBar = ({onFinish}) => {
@@ -34,17 +34,15 @@ const SearchBar = ({onFinish}) => {
                 name="quantity"
                 rules={[
                     {
-                      pattern: /^(?:\d*)$/,
-                      message: "Value should contain just number",
-                    },
-                    {
-                      max:1,
-                      message: "Value should be less than 50 character",
+                      required:true,
+                      message: "This field is required.",
                     },
                   ]}
                   validateTrigger="onChange"
             >
-                <Input maxLength={1} placeholder="Enter number of image" />
+                <Select placeholder="Please Select Quantity." style={{minWidth:'200px'}}>
+                    {[1,2,3,4,5,6,7,8,9,10].map((val)=><Select.Option key={val}>{val}</Select.Option>)}
+                </Select>
             </Form.Item>
             <Form.Item shouldUpdate>
                 {() => (
